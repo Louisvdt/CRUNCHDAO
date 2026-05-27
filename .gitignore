@@ -1,0 +1,10 @@
+.venv/
+.crunchdao/token
+
+__pycache__/
+*.pyc
+
+data/*.parquet
+data/*.csv
+
+prediction/
