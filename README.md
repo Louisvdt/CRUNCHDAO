@@ -1,6 +1,6 @@
 # DataCrunch Equity Market Neutral
 
-My submission for the [CrunchDAO DataCrunch Equity Market Neutral](https://www.crunchdao.com) competition.
+My submission for the [CrunchDAO DataCrunch Equity Market Neutral]competition.
 The goal: predict a per-stock cross-sectional signal (target ∈ {-1, 0, +1, and a few continuous bins})
 that ranks stocks in the Russell 3000 universe, with scoring done via **per-moon Pearson correlation**.
 
@@ -52,9 +52,9 @@ Understand the data before modeling. Key sub-sections:
 - **A.4** — Linear (IC sharpe) vs non-linear (Mutual Information) signal. The two metrics surface **disjoint** feature families: IC catches the linear reversal cluster, MI catches the "extreme reversal" non-linear features. Hierarchical clustering on the 1150×1150 Spearman matrix shows clear duplicate families: at corr ≥ 0.95, ~30% of features are deduplicable.
 
 ### Phase B — Metric & validation
-- **B.1** — Monte-Carlo simulator of the Pearson metric on the ternary target. Confirms that sign accuracy on movers dominates the score; noise on zeros barely matters.
+- **B.1** — Monte-Carlo simulator of the Pearson metric. Confirms that sign accuracy on movers dominates the score.
 
-> *Walk-forward validation (purged K-fold) was used during development to score model candidates but is omitted from this clean notebook — see "What was removed" below.*
+> *Walk-forward validation (purged K-fold) was used during development to score model candidates but is omitted from this clean notebook.*
 
 ### Phase C — Modeling
 - **C.1** — Feature engineering. The notebook keeps the **"extreme reversal" binary features** (C.1.2): aggregated counters built from the top-MI features. Empirically the gain was marginal and the final model below does not include them, but the code is left in for reference.
@@ -65,13 +65,11 @@ Understand the data before modeling. Key sub-sections:
 
 ## What was removed from this clean notebook
 
-To keep the repo focused, the following development-time sections were dropped from `submission.ipynb`
-(they exist in the local working copy but are not part of this clean version):
+To keep the repo focused, the following development-time sections were dropped from `submission.ipynb`:
 
 - **B.2** — Walk-forward validation harness (`walk_forward_score`, baseline LGBM run).
 - **C.1.1** — Family aggregation features (negative result: no measurable gain).
 - **C.2.1** — Optuna hyperparameter search (the best params it found are hardcoded in the final `train()`).
-- **C.2.2 – C.2.5** — Empty TODO scaffolding from earlier planning.
 
 ## Final result
 
